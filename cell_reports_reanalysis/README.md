@@ -36,7 +36,9 @@ For this reanalysis, we aligned reads against GRCh38 (GENCODE release 28) instea
 
 ### 4. Filter reads
 
-Liu et al. kept only uniquely mapping reads and filtered out ribosomal, mitochondrial, and non-standard chromosomal reads (i.e. X or Y chromosome reads). 
+Liu et al. kept only uniquely mapping reads and filtered out ribosomal, mitochondrial, and non-standard chromosomal reads (i.e. X or Y chromosome reads). The authors modified the script called *norm_scripts/filter_sam.pl* from the PORT pipeline https://github.com/itmat/Normalization.git. 
+
+norm_scripts/filter_sam.pl
 
 ### 5. Convert SAM files to BAM files and sort by coordinate 
 
