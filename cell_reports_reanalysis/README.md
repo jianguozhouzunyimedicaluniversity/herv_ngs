@@ -30,10 +30,10 @@ All RNA-Seq data processing steps were done on NIH's Biowulf cluster.
 
 ### 1. Download RNA-Seq data
 
-Load SRA-Toolkit    
+__Load SRA-Toolkit__    
 `module load sratoolkit/2.9.6`  
 
-Run fastq-dump on SRA paired-end files    
+__Run fastq-dump on SRA paired-end files__    
 `fastq-dump -I --split-files SRR8571937`
 
 
@@ -45,7 +45,7 @@ Per Dr. Edward Lee, trimming and filtering of reads were not performed.
 
 In the paper, sequencing reads were aligned against GRCh38 (GENCODE release 22) using STAR 2.2.4 with option --outFilterIntronMotifs RemoveNonCanonical. All other parameters were kept as default.
 
-For this reanalysis, we aligned reads against GRCh38 (GENCODE release 28) instead since we already have been using this version for other analyses.
+For this reanalysis, we aligned reads against GRCh38 (GENCODE release 28) instead since we already have been using this version for other analyses. In addition, the GTF file from this release was concatenated with Dr. Nath's lab's GTF file of HERVK annotations (*ALS_Annotations.gtf*). As a result, our genome indexes for STAR will be slightly different. 
 
 ### 4. Filter reads
 
