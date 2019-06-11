@@ -17,7 +17,7 @@ RNA was extracted from the neuronal nuclei of the frontal cortex from 7 patients
 ## Software
 
  * FastQC 0.11.8 - version used in paper was 0.11.3     
- * STAR 2.7.0f - version used in paper was 2.2.4  
+ * STAR 2.6.1c - version used in paper was 2.2.4  
  * SAMtools 1.9 - version not listed in paper
  
  * SRA-Toolkit 2.9.6 
@@ -30,20 +30,20 @@ All RNA-Seq data processing steps were done on NIH's Biowulf cluster.
 
 ### 1. Download RNA-Seq data
 
-__Load SRA-Toolkit__    
-`module load sratoolkit/2.9.6`  
+__Load SRA-Toolkit__      
+`module load sratoolkit/2.9.6`    
 
-__Run fastq-dump on SRA paired-end files__    
-`fastq-dump -I --split-files SRR8571937`
+__Run fastq-dump on SRA paired-end files__      
+`fastq-dump -I --split-files SRR8571937`  
 
 
 ### 2. Perform QC with FastQC
 
-__Load FastQC__  
-`module load fastqc/0.11.8`
+__Load FastQC__    
+`module load fastqc/0.11.8`  
 
-__Run FastQC__
-`fastqc -o fastqc_reports SRR8571937_1.fastq SRR8571937_2.fastq`
+__Run FastQC__  
+`fastqc -o fastqc_reports SRR8571937_1.fastq SRR8571937_2.fastq`  
 
 Per Dr. Edward Lee, trimming and filtering of reads were not performed. 
 
@@ -52,6 +52,14 @@ Per Dr. Edward Lee, trimming and filtering of reads were not performed.
 In the paper, sequencing reads were aligned against GRCh38 (GENCODE release 22) using STAR 2.2.4 with option --outFilterIntronMotifs RemoveNonCanonical. All other parameters were kept as default.
 
 For this reanalysis, we aligned reads against GRCh38 (GENCODE release 28) instead since we already have been using this version for other analyses. In addition, the GTF file from this release was concatenated with Dr. Nath's lab's GTF file of HERVK annotations (*ALS_Annotations.gtf*). As a result, our genome indexes for STAR will be slightly different. 
+
+__Load STAR__  
+`module load STAR/2.6.1c`
+
+__Run STAR__    
+`STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38 --readFilesIn SRR8571939_1.fastq SRR8571939_2.fastq --outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/sam/SRR8571939_1  --outFilterIntronMotifs RemoveNoncanonical`
+
+* The most recent version of STAR, 2.7.0f, had the following error: *Genome version: 20201 is INCOMPATIBLE with running STAR version: 2.7.0f*. As a work around, we used an older version to avoid having to re-generate the genome from scratch. 
 
 ### 4. Filter reads
 
