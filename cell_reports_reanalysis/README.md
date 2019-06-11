@@ -39,6 +39,12 @@ __Run fastq-dump on SRA paired-end files__
 
 ### 2. Perform QC with FastQC
 
+__Load FastQC__  
+`module load fastqc/0.11.8`
+
+__Run FastQC__
+`fastqc -o fastqc_reports SRR8571937_1.fastq SRR8571937_2.fastq`
+
 Per Dr. Edward Lee, trimming and filtering of reads were not performed. 
 
 ### 3. Map reads to reference genome with STAR
