@@ -47,7 +47,7 @@ __Run FastQC__
 
 Per Dr. Edward Lee, trimming and filtering of reads were not performed. 
 
-### 3. Map reads to reference genome with STAR
+### 3. Map reads to reference genome with STAR and convert SAM to BAM
 
 In the paper, sequencing reads were aligned against GRCh38 (GENCODE release 22) using STAR 2.2.4 with option --outFilterIntronMotifs RemoveNonCanonical. All other parameters were kept as default.
 
@@ -56,8 +56,11 @@ For this reanalysis, we aligned reads against GRCh38 (GENCODE release 28) instea
 __Load STAR__  
 `module load STAR/2.6.1c`
 
-__Run STAR__    
-`STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38 --readFilesIn SRR8571939_1.fastq SRR8571939_2.fastq --outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/sam/SRR8571939_1  --outFilterIntronMotifs RemoveNoncanonical`
+__Load SAMtools__
+`module load samtools`
+
+__Run STAR and SAMtools__    
+`STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38 --readFilesIn SRR8571939_1.fastq SRR8571939_2.fastq --outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571939 --outFilterIntronMotifs RemoveNoncanonical --outTmpDir=/lscratch/$SLURM_JOB_ID/STARtmp | samtools view -S -b -o /data/johnsonko/Tara/bam/SRR8571939.bam`
 
 Note: The most recent version of STAR, 2.7.0f, had the following error: *Genome version: 20201 is INCOMPATIBLE with running STAR version: 2.7.0f*. As a work around, we used an older version to avoid having to re-generate the genome from scratch. 
 
