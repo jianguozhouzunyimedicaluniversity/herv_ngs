@@ -60,7 +60,7 @@ __Load SAMtools__
 `module load samtools`
 
 __Run STAR and SAMtools__    
-`STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38 --readFilesIn SRR8571939_1.fastq SRR8571939_2.fastq --outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571939 --outFilterIntronMotifs RemoveNoncanonical --outTmpDir=/lscratch/$SLURM_JOB_ID/STARtmp | samtools view -S -b -o /data/johnsonko/Tara/bam/SRR8571939.bam`
+`STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38 --readFilesIn SRR8571939_1.fastq SRR8571939_2.fastq --outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571939 --outFilterIntronMotifs RemoveNoncanonical --outTmpDir=/lscratch/$SLURM_JOB_ID/STARtmp | samtools view -S -b -o /data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571939.bam`
 
 Note: The most recent version of STAR, 2.7.0f, had the following error: *Genome version: 20201 is INCOMPATIBLE with running STAR version: 2.7.0f*. As a work around, we used an older version to avoid having to re-generate the genome from scratch. 
 
