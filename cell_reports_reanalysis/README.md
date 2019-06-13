@@ -19,6 +19,7 @@ RNA was extracted from the neuronal nuclei of the frontal cortex from 7 patients
  * FastQC 0.11.8 - version used in paper was 0.11.3     
  * STAR 2.6.1c - version used in paper was 2.2.4  
  * SAMtools 1.9 - version not listed in paper
+ * PORT v0.8.5
  
  * SRA-Toolkit 2.9.6 
  * TEToolkit 2.0.3  
@@ -55,7 +56,9 @@ Per Dr. Edward Lee, trimming and filtering of reads were not performed.
 
 In the paper, sequencing reads were aligned against GRCh38 (GENCODE release 22) using STAR 2.2.4 with option --outFilterIntronMotifs RemoveNonCanonical. All other parameters were kept as default.
 
-For this reanalysis, we aligned reads against GRCh38 (GENCODE release 28) instead since we already have been using this version for other analyses. In addition, the GTF file from this release was concatenated with Dr. Nath's lab's GTF file of HERVK annotations (*ALS_Annotations.gtf*). As a result, our genome indexes for STAR will be slightly different. 
+For this reanalysis, we aligned reads against GRCh38 (GENCODE release 28) instead since we already have been using this version for other analyses. In addition, the GTF file from this release was concatenated with Dr. Nath's lab's GTF file of HERVK annotations (*ALS_Annotations.gtf*). As a result, our genome indices for STAR was slightly different from the authors' genome indices. 
+
+We added the parameter --outSAMunmapped Within KeepPairs to ensure that the data was compatible with PORT. 
 
 __Load STAR__  
 
