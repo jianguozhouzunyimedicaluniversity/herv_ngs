@@ -81,6 +81,28 @@ __Download PORT__
 
 `git clone https://github.com/itmat/Normalization.git`
 
+__Reorganize file directories for PORT__
+
+The input files, FASTQ and SAM, must be organized into a specific directory structure for PORT to run properly. 
+
+Example:
+
+`STUDY
+└── READS
+    ├── Sample_1
+    │   ├── Unaligned reads
+    │   └── Aligned.sam/bam
+    ├── Sample_2
+    │   ├── Unaligned reads
+    │   └── Aligned.sam/bam
+    ├── Sample_3
+    │   ├── Unaligned reads
+    │   └── Aligned.sam/bam
+    └── Sample_4
+        ├── Unaligned reads
+        └── Aligned.sam/bam
+        `
+
 __Filter SAM file__
 
 `perl PORT/norm_scripts/filter_sam.pl SRR8571939.sam SRR8571939.filtered.sam ribosomalids.txt -u`
