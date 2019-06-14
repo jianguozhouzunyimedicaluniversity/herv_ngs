@@ -87,7 +87,8 @@ The input files, FASTQ and SAM, must be organized into a specific directory stru
 
 Example:
 
-`STUDY
+<pre>
+STUDY
 └── READS
     ├── Sample_1
     │   ├── Unaligned reads
@@ -101,7 +102,7 @@ Example:
     └── Sample_4
         ├── Unaligned reads
         └── Aligned.sam/bam
-        `
+</pre>
 
 __Filter SAM file__
 
