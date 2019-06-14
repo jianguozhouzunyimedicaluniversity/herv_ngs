@@ -105,16 +105,30 @@ STUDY
         └── Aligned.sam/bam
 </pre>
 
+__Run BLAST to find ribosomal reads in FASTQ files__
+
+<pre> perl runblast.pl <dir> <loc> <blastdir> <query> [option] rRNA_mm9.fa </pre>
+
+-fq: set this if the unaligned files are in fastq format
+-pe \"<unlaligned1>,<unaligned2>\" : set this if the data are paired end and provide two unaligned files
+ 
+ The developers for PORT provided a FASTA file of ribosomal RNAs that can be used for mammals, *norm_scripts/rRNA_mm9.fa*.
+ 
+__Parse BLAST output to extract ribosomal IDs__
+
+<pre>perl parseblastout.pl <id> <loc> </pre>
+
 __Filter SAM file__
 
-`perl PORT/norm_scripts/filter_sam.pl SRR8571939.sam SRR8571939.filtered.sam ribosomalids.txt -u`
+
+<pre>perl PORT/norm_scripts/filter_sam.pl SRR8571939.sam SRR8571939.filtered.sam ribosomalids.txt -u</pre>
 
 The script was modified to filter out reads mapped to chromosomes X and Y.  
 
 This script will remove all rows from the SAM file except those that satisfy all of the following:  
 1. Unique mapper (-u option)  
 2. Both forward and reverse reads map consistently  
-3. Read ID not in the ribosomalids file  
+3. Read ID not in the ribosomalids text file  
 4. Chromosome is one of the numbered ones (e.g. chr1, chr2, OR 1, 2)
 5. Is a forward mapper (script outputs forward mappers only)
 
