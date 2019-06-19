@@ -88,7 +88,7 @@ Note: The most recent version of STAR, 2.7.0f, had the following error: *Genome 
 
 ### 4. Filter reads with PORT
 
-Liu et al. kept only uniquely mapping reads and filtered out ribosomal, mitochondrial, and non-standard chromosomal reads (i.e. X or Y chromosome reads). The authors modified the script called *filter_sam.pl* from the PORT pipeline https://github.com/itmat/Normalization.git. 
+Liu et al. kept only uniquely mapping reads and filtered out ribosomal, mitochondrial, and non-standard chromosomal reads (i.e. X or Y chromosome reads). The authors modified the script called *norm_scripts/filter_sam.pl* from the PORT pipeline https://github.com/itmat/Normalization.git. 
 
 __Download PORT__  
 
@@ -119,7 +119,7 @@ STUDY
 
 __Convert FASTQ files to FASTA__
 
-Used PORT's *fastq2fasta.pl* script to convert all FASTQ files to FASTA files. 
+Used PORT's *norm_scripts/fastq2fasta.pl* script to convert all FASTQ files to FASTA files. 
 
 Example:  
 <pre>
@@ -150,7 +150,7 @@ makeblastdb -dbtype nucl -max_file_sz 300MB -in
 -out /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb2.SRR8571937
 </pre>
 
-Note: We tried to use *runall_runblast.pl* but received an error when using cluster option -other and Biowulf's sbatch parameters. 
+Note: We tried to use *norm_scripts/runall_runblast.pl* but received an error when using cluster option -other and Biowulf's sbatch parameters. 
 
 __Identify ribosomal reads in BLAST databases__
 
