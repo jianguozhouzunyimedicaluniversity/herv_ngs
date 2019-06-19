@@ -20,6 +20,7 @@ RNA was extracted from the neuronal nuclei of the frontal cortex from 7 patients
  * STAR 2.6.1c - version used in paper was 2.2.4  
  * SAMtools 1.9 - version not listed in paper
  * PORT v0.8.5
+ * blast/2.2.30+
  
  * SRA-Toolkit 2.9.6 
  * TEToolkit 2.0.3  
