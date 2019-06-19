@@ -30,6 +30,10 @@ RNA was extracted from the neuronal nuclei of the frontal cortex from 7 patients
 
 All RNA-Seq data processing steps were done on NIH's Biowulf cluster.
 
+An interactive session was created using the following command:  
+`sinteractive --cpus-per-task=12 --mem=100g --gres=lscratch:100`  
+
+
 ### 1. Download RNA-Seq data
 
 __Load SRA-Toolkit__
@@ -38,6 +42,7 @@ __Load SRA-Toolkit__
 
 __Run fastq-dump on SRA paired-end files__   
 
+Example:  
 `fastq-dump -I --split-files SRR8571937`  
 
 
@@ -49,6 +54,7 @@ __Load FastQC__
 
 __Run FastQC__  
 
+Example:  
 `fastqc -o fastqc_reports SRR8571937_1.fastq`  
 
 Per Dr. Edward Lee, trimming and filtering of reads were not performed. 
@@ -69,6 +75,7 @@ __Load STAR__
 
 __Run STAR__    
 
+Example:  
 <pre>
 STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38   
 --readFilesIn SRR8571937_1.fastq  SRR8571937_2.fastq --outFileNamePrefix  
@@ -81,7 +88,7 @@ Note: The most recent version of STAR, 2.7.0f, had the following error: *Genome 
 
 ### 4. Filter reads with PORT
 
-Liu et al. kept only uniquely mapping reads and filtered out ribosomal, mitochondrial, and non-standard chromosomal reads (i.e. X or Y chromosome reads). The authors modified the script called *norm_scripts/filter_sam.pl* from the PORT pipeline https://github.com/itmat/Normalization.git. 
+Liu et al. kept only uniquely mapping reads and filtered out ribosomal, mitochondrial, and non-standard chromosomal reads (i.e. X or Y chromosome reads). The authors modified the script called *filter_sam.pl* from the PORT pipeline https://github.com/itmat/Normalization.git. 
 
 __Download PORT__  
 
@@ -114,6 +121,7 @@ __Convert FASTQ files to FASTA__
 
 Used PORT's *fastq2fasta.pl* script to convert all FASTQ files to FASTA files. 
 
+Example:  
 <pre>
 perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/fastq2fasta.pl   
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fastq   
@@ -125,6 +133,8 @@ __Load BLAST__
 `module load blast/2.2.30+`
 
 __Build BLAST databases with FASTA files__
+
+Example:  
 
 Database for sample's forward reads:   
 <pre>
@@ -140,12 +150,15 @@ makeblastdb -dbtype nucl -max_file_sz 300MB -in
 -out /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb2.SRR8571937
 </pre>
 
+Note: We tried to use *runall_runblast.pl* but received an error when using cluster option -other and Biowulf's sbatch parameters. 
+
 __Identify ribosomal reads in BLAST databases__
 
+Example:  
 <pre>
 blastn -db /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937 -query
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa 
--num_descriptions 1000000000 -num_alignments 1000000000 > $SRR8571937_db1_blastout
+-num_descriptions 1000000000 -num_alignments 1000000000 > SRR8571937_db1_blastout
 </pre>
  
  The developers for PORT provided a FASTA file of ribosomal RNAs that can be used for mammals, *norm_scripts/rRNA_mm9.fa*.
