@@ -70,7 +70,7 @@ __Load STAR__
 __Run STAR__    
 
 <pre>
-STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38 --readFilesIn SRR8571939_1.fastq SRR8571939_2.fastq --outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/sam/SRR8571939 --outFilterIntronMotifs RemoveNoncanonical --outSAMunmapped Within KeepPairs </pre>
+STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38 --readFilesIn SRR8571937_1.fastq SRR8571937_2.fastq --outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/sam/SRR8571937 --outFilterIntronMotifs RemoveNoncanonical --outSAMunmapped Within KeepPairs </pre>
 
 
 Note: The most recent version of STAR, 2.7.0f, had the following error: *Genome version: 20201 is INCOMPATIBLE with running STAR version: 2.7.0f*. As a work around, we used an older version to avoid having to re-generate the genome indices from scratch. 
@@ -106,12 +106,40 @@ STUDY
         └── Aligned.sam/bam
 </pre>
 
-__Run BLAST to find ribosomal reads in FASTQ files__
+__Convert FASTQ files to FASTA__
+
+Used PORT's *fastq2fasta.pl* script to convert all FASTQ files to FASTA files. 
+
+<pre>
+perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/fastq2fasta.pl /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fastq /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/$SRR8571937_1.fasta
+</pre>
+
+__Load BLAST__ 
+
+`module load blast/2.2.30+`
+
+__Build BLAST databases with FASTA files__
+
+Database for sample's forward reads:   
+<pre>
+makeblastdb -dbtype nucl -max_file_sz 300MB -in /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fasta -out 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937
+</pre>
+
+Database for sample's reverse reads:
+<pre>
+makeblastdb -dbtype nucl -max_file_sz 300MB -in /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_2.fasta -out 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb2.SRR8571937
+</pre>
+
+__Identify ribosomal reads in BLAST databases__
 
 perl runall_runblast.pl <sample dirs> <loc> <unaligned> <blast dir> <query> [option]
  
 <pre> 
-perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/runall_runblast.pl /data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/SRR_Acc_List.txt /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/unaligned.txt /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/ncbi-blast-2.2.30+/ /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa -fq 
+blastn -db /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937 -query /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa -num_descriptions 1000000000 -num_alignments 1000000000 > $SRR8571937_1_out
+
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa -fq 
 </pre>
 
 where:
