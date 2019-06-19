@@ -70,7 +70,10 @@ __Load STAR__
 __Run STAR__    
 
 <pre>
-STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38 --readFilesIn SRR8571937_1.fastq SRR8571937_2.fastq --outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/sam/SRR8571937 --outFilterIntronMotifs RemoveNoncanonical --outSAMunmapped Within KeepPairs 
+STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38   
+--readFilesIn SRR8571937_1.fastq  SRR8571937_2.fastq --outFileNamePrefix  
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/sam/SRR8571937 --outFilterIntronMotifs   
+RemoveNoncanonical --outSAMunmapped Within KeepPairs 
 </pre>
 
 
@@ -112,9 +115,9 @@ __Convert FASTQ files to FASTA__
 Used PORT's *fastq2fasta.pl* script to convert all FASTQ files to FASTA files. 
 
 <pre>
-perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/fastq2fasta.pl 
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fastq 
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/$SRR8571937_1.fasta
+perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/fastq2fasta.pl   
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fastq   
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/$SRR8571937_1.fasta  
 </pre>
 
 __Load BLAST__ 
