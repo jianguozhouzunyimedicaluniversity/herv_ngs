@@ -70,7 +70,8 @@ __Load STAR__
 __Run STAR__    
 
 <pre>
-STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38 --readFilesIn SRR8571937_1.fastq SRR8571937_2.fastq --outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/sam/SRR8571937 --outFilterIntronMotifs RemoveNoncanonical --outSAMunmapped Within KeepPairs </pre>
+STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38 --readFilesIn SRR8571937_1.fastq SRR8571937_2.fastq --outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/sam/SRR8571937 --outFilterIntronMotifs RemoveNoncanonical --outSAMunmapped Within KeepPairs 
+</pre>
 
 
 Note: The most recent version of STAR, 2.7.0f, had the following error: *Genome version: 20201 is INCOMPATIBLE with running STAR version: 2.7.0f*. As a work around, we used an older version to avoid having to re-generate the genome indices from scratch. 
