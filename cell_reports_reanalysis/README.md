@@ -112,7 +112,9 @@ __Convert FASTQ files to FASTA__
 Used PORT's *fastq2fasta.pl* script to convert all FASTQ files to FASTA files. 
 
 <pre>
-perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/fastq2fasta.pl /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fastq /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/$SRR8571937_1.fasta
+perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/fastq2fasta.pl 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fastq 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/$SRR8571937_1.fasta
 </pre>
 
 __Load BLAST__ 
@@ -123,14 +125,14 @@ __Build BLAST databases with FASTA files__
 
 Database for sample's forward reads:   
 <pre>
-makeblastdb -dbtype nucl -max_file_sz 300MB -in /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fasta -out 
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937
+makeblastdb -dbtype nucl -max_file_sz 300MB -in /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fasta 
+-out /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937
 </pre>
 
 Database for sample's reverse reads:
 <pre>
-makeblastdb -dbtype nucl -max_file_sz 300MB -in /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_2.fasta -out 
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb2.SRR8571937
+makeblastdb -dbtype nucl -max_file_sz 300MB -in /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_2.fasta 
+-out /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb2.SRR8571937
 </pre>
 
 __Identify ribosomal reads in BLAST databases__
