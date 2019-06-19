@@ -84,7 +84,7 @@ __Download PORT__
 
 __Reorganize file directories for PORT__
 
-The input files, FASTQ and SAM, must be organized into a specific directory structure for PORT to run properly. 
+The input files, FASTQ and SAM, must be organized into a specific directory structure for PORT to run properly. All alignment SAM files must have the same name across samples.
 
 Example:
 
@@ -107,7 +107,21 @@ STUDY
 
 __Run BLAST to find ribosomal reads in FASTQ files__
 
-<pre> perl runblast.pl <dir> <loc> <blastdir> <query> [option] rRNA_mm9.fa </pre>
+perl runall_runblast.pl <sample dirs> <loc> <unaligned> <blast dir> <query> [option]
+ 
+<pre> perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/runall_runblast.pl \ /data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/SRR_Acc_List.txt \
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads \
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/unaligned.txt \ /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/ncbi-blast-2.2.30+/ \ /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa -fq </pre>
+
+where:
+<sample dirs> is a file with the names of the sample directories
+<loc> is the directory with the sample directories
+<unaligned> is a file with the full path of all unaligned files
+<blast dir> is the blast dir (full path)
+<query> query file (full path)
+option:  
+ -fa : set this if the unaligned files are in fasta format
+ -fq : set this if the unaligned files are in fastq format
 
 -fq: set this if the unaligned files are in fastq format
 -pe \"<unlaligned1>,<unaligned2>\" : set this if the data are paired end and provide two unaligned files
