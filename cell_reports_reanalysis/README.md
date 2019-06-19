@@ -143,7 +143,9 @@ makeblastdb -dbtype nucl -max_file_sz 300MB -in
 __Identify ribosomal reads in BLAST databases__
 
 <pre> 
-blastn -db /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937 -query /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa -num_descriptions 1000000000 -num_alignments 1000000000 > $SRR8571937_db1_blastout
+blastn -db /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937 -query
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa -num_descriptions 1000000000 -num_alignments
+1000000000 > $SRR8571937_db1_blastout
 </pre>
  
  The developers for PORT provided a FASTA file of ribosomal RNAs that can be used for mammals, *norm_scripts/rRNA_mm9.fa*.
