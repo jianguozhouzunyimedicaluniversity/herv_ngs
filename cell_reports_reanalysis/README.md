@@ -125,13 +125,15 @@ __Build BLAST databases with FASTA files__
 
 Database for sample's forward reads:   
 <pre>
-makeblastdb -dbtype nucl -max_file_sz 300MB -in /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fasta 
--out /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937
+makeblastdb -dbtype nucl -max_file_sz 300MB -in 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fasta -out 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937
 </pre>
 
 Database for sample's reverse reads:
 <pre>
-makeblastdb -dbtype nucl -max_file_sz 300MB -in /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_2.fasta 
+makeblastdb -dbtype nucl -max_file_sz 300MB -in
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_2.fasta 
 -out /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb2.SRR8571937
 </pre>
 
