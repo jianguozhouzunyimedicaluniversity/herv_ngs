@@ -110,9 +110,7 @@ __Run BLAST to find ribosomal reads in FASTQ files__
 perl runall_runblast.pl <sample dirs> <loc> <unaligned> <blast dir> <query> [option]
  
 <pre> 
-perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/runall_runblast.pl \   /data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/SRR_Acc_List.txt \  
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads \  
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/unaligned.txt \   /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/ncbi-blast-2.2.30+/ \   /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa -fq 
+perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/runall_runblast.pl /data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/SRR_Acc_List.txt /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/unaligned.txt /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/ncbi-blast-2.2.30+/ /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa -fq 
 </pre>
 
 where:
