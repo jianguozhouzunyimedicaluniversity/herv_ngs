@@ -55,7 +55,8 @@ __Load FastQC__
 __Run FastQC__  
 
 Example:  
-`fastqc -o fastqc_reports SRR8571937_1.fastq`  
+`fastqc -o /data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/fastqc_reports
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/SRR8571937_1.fastq` 
 
 Per Dr. Edward Lee, trimming and filtering of reads were not performed. 
 
@@ -78,9 +79,10 @@ __Run STAR__
 Example:  
 <pre>
 STAR --runThreadN $SLURM_CPUS_PER_TASK --genomeDir /data/ALS_Working_Grp/Star/indices/hg38   
---readFilesIn SRR8571937_1.fastq  SRR8571937_2.fastq --outFileNamePrefix  
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/sam/SRR8571937 --outFilterIntronMotifs   
-RemoveNoncanonical --outSAMunmapped Within KeepPairs 
+--readFilesIn /data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/SRR8571937_1.fastq  
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/SRR8571937_2.fastq 
+--outFileNamePrefix /data/ALS_Working_Grp/Cell_Reports_reanalysis/sam/SRR8571937
+--outFilterIntronMotifs RemoveNoncanonical --outSAMunmapped Within KeepPairs 
 </pre>
 
 
@@ -156,8 +158,8 @@ __Identify ribosomal reads in BLAST databases__
 
 Example:  
 <pre>
-blastn -task blastn -db /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937 -query
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa 
+blastn -task blastn -db /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937 
+-query /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa 
 -num_descriptions 1000000000 -num_alignments 1000000000 > 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_db1_blastout
 </pre>
