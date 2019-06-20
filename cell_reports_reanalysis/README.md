@@ -127,7 +127,7 @@ Example:
 <pre>
 perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/fastq2fasta.pl   
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fastq   
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/$SRR8571937_1.fasta  
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_1.fasta  
 </pre>
 
 __Load BLAST__ 
