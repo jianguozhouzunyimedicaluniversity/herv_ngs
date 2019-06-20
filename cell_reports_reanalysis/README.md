@@ -161,7 +161,7 @@ Example:
 blastn -task blastn -db 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/blastdb1.SRR8571937 
 -query /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/rRNA_mm9.fa 
--num_descriptions 1000000000 -num_alignments 1000000000 > 
+-num_descriptions 1000000000 -num_alignments 1000000000 -num_threads $SLURM_CPUS_PER_TASK > 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937_db1_blastout
 </pre>
  
