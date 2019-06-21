@@ -234,15 +234,15 @@ TEcount --sortByPos --format BAM --mode multi --stranded reverse -i 100
 --project /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/TE_COUNTS_SRR8571937
 </pre>
 
-Required and optional arguments:
---GTF genic-GTF-file: GTF file for gene annotations  
---TE TE-GTF-file: GTF file for transposable element annotations  
---mode [TE counting mode]: uniq (unique mappers only) or multi (distribute among all alignments). DEFAULT: multi
---format [input file format]: Input file format: BAM or SAM. DEFAULT: BAM
---stranded [option] Is this a stranded library? (yes, no, or reverse). DEFAULT: yes.
---sortByPos: Input file is sorted by chromosome position.
---project [name]: Prefix used for output files (e.g. project name) DEFAULT: TEcount_out
--i | --iteration: maximum number of iterations used to optimize multi-reads assignment. DEFAULT: 100
+Required and optional arguments:  
+--GTF genic-GTF-file: GTF file for gene annotations    
+--TE TE-GTF-file: GTF file for transposable element annotations    
+--mode [TE counting mode]: uniq (unique mappers only) or multi (distribute among all alignments). DEFAULT: multi  
+--format [input file format]: Input file format: BAM or SAM. DEFAULT: BAM  
+--stranded [option] Is this a stranded library? (yes, no, or reverse). DEFAULT: yes  
+--sortByPos: Input file is sorted by chromosome position  
+--project [name]: Prefix used for output files (e.g. project name) DEFAULT: TEcount_out  
+-i | --iteration: maximum number of iterations used to optimize multi-reads assignment. DEFAULT: 100  
 
 For more details on how to use TEcount, go to https://github.com/mhammell-laboratory/tetoolkit.
 
