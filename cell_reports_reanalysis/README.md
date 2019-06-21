@@ -175,12 +175,17 @@ perl data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/parseblastou
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads
 </pre>
 
+The *norm_scripts/parseblastout.pl* script was modified so that the BLAST databases and output are not deleted.
+
 __Filter SAM file__
 
+<pre>
+perl data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/filter_sam.pl 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/Aligned.sam 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937.sam 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937.ribosomalids.txt -u</pre>
 
-<pre>perl PORT/norm_scripts/filter_sam.pl SRR8571939.sam SRR8571939.filtered.sam ribosomalids.txt -u</pre>
-
-The script was modified to filter out reads mapped to chromosomes X and Y.  
+The *norm_scripts/filter_sam.pl* script was modified to filter out reads mapped to chromosomes X and Y.  
 
 This script will remove all rows from the SAM file except those that satisfy all of the following:  
 1. Unique mapper (-u option)  
@@ -190,16 +195,57 @@ This script will remove all rows from the SAM file except those that satisfy all
 5. Is a forward mapper (script outputs forward mappers only)
 
 
-### 5. Sort by coordinate 
+### 5. Convert SAM to BAM format and sort by coordinate 
 
 __Load SAMtools__
 
 `module load samtools/1.9`
 
-`samtools view`
+__Run SAMtools view__
 
-`samtools sort`
+Example:  
+<pre>
+samtools view -S -b -o /data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571937.bam
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937.sam
+</pre>
+
+__Run SAMtools sort__
+
+Example:  
+<pre>
+samtools sort -T /lscratch/$SLURM_JOB_ID/SRR8571937 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571937.bam -O BAM -o
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/sorted_bam/SRR8571937_coordsort.bam
+</pre>
+
+### 6. Annotate reads to transposable elements with TEcount
+
+__Load TEToolKit__
+
+`module load tetoolkit/2.0.3`
+
+__Run TEcount__
+
+Example:  
+<pre>
+TEcount --sortByPos --format BAM --mode multi 
+-b /data/ALS_Working_Grp/Cell_Reports_reanalysis/sorted_bam/SRR8571937_coordsort.bam 
+--GTF /data/ALS_Working_Grp/Gtf/hg38.gtf --TE /data/ALS_Working_Grp/Gtf/HERVK_Nath_2.gtf
+--stranded reverse -i 100 --project /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/TE_COUNTS_SRR8571937
+</pre>
+
+Required and optional arguments:
+--GTF genic-GTF-file: GTF file for gene annotations  
+--TE TE-GTF-file: GTF file for transposable element annotations  
+--mode [TE counting mode]: uniq (unique mappers only) or multi (distribute among all alignments). DEFAULT: multi
+--format [input file format]: Input file format: BAM or SAM. DEFAULT: BAM
+--stranded [option] Is this a stranded library? (yes, no, or reverse). DEFAULT: yes.
+--sortByPos: Input file is sorted by chromosome position.
+--project [name]: Prefix used for output files (e.g. project name) DEFAULT: TEcount_out
+-i | --iteration: maximum number of iterations used to optimize multi-reads assignment. DEFAULT: 100
+
+For more details on how to use TEcount, go to https://github.com/mhammell-laboratory/tetoolkit.
+
+
 
 `samtools idxstats alignments.bam`
-
-### 6. 
