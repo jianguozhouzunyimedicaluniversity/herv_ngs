@@ -228,10 +228,10 @@ __Run TEcount__
 
 Example:  
 <pre>
-TEcount --sortByPos --format BAM --mode multi 
+TEcount --sortByPos --format BAM --mode multi --stranded reverse -i 100
 -b /data/ALS_Working_Grp/Cell_Reports_reanalysis/sorted_bam/SRR8571937_coordsort.bam 
 --GTF /data/ALS_Working_Grp/Gtf/hg38.gtf --TE /data/ALS_Working_Grp/Gtf/HERVK_Nath_2.gtf
---stranded reverse -i 100 --project /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/TE_COUNTS_SRR8571937
+--project /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/TE_COUNTS_SRR8571937
 </pre>
 
 Required and optional arguments:
