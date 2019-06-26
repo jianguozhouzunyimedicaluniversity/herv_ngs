@@ -171,7 +171,7 @@ __Parse BLAST output to extract ribosomal IDs__
 
 Example:
 <pre>
-perl data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/parseblastout.pl SRR8571937 
+perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/parseblastout.pl SRR8571937 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads
 </pre>
 
@@ -180,7 +180,7 @@ The *norm_scripts/parseblastout.pl* script was modified so that the BLAST databa
 __Filter SAM file__
 
 <pre>
-perl data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/filter_sam.pl 
+perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/filter_sam.pl 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/Aligned.sam 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937.sam 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937.ribosomalids.txt -u</pre>
