@@ -208,7 +208,7 @@ __Run SAMtools view__
 
 Example:  
 <pre>
-samtools view -S -b -o /data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571937.bam
+samtools view -S -b -h -o /data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571937.bam
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam
 </pre>
 
