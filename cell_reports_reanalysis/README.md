@@ -19,8 +19,8 @@ RNA was extracted from the neuronal nuclei of the frontal cortex from 7 patients
  * FastQC 0.11.8 - version used in paper was 0.11.3     
  * STAR 2.6.1c - version used in paper was 2.2.4  
  * SAMtools 1.9 - version not listed in paper
- * PORT v0.8.5
- * blast/2.2.30+
+ * PORT v0.8.5 - version not listed in paper
+ * BLAST 2.2.30+ - comes with PORT installation
  
  * SRA-Toolkit 2.9.6 
  * TEToolkit 2.0.3  
@@ -194,6 +194,10 @@ This script will remove all rows from the SAM file except those that satisfy all
 4. Chromosome is one of the numbered ones (e.g. chr1, chr2, OR 1, 2)
 5. Is a forward mapper (script outputs forward mappers only)
 
+__Gunzip SAM files (output)__
+ <pre>
+ gunzip /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam.gz
+ </pre>
 
 ### 5. Convert SAM to BAM format and sort by coordinate 
 
@@ -206,7 +210,7 @@ __Run SAMtools view__
 Example:  
 <pre>
 samtools view -S -b -o /data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571937.bam
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937.sam
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam
 </pre>
 
 __Run SAMtools sort__
