@@ -204,12 +204,23 @@ __Load SAMtools__
 
 `module load samtools/1.9`
 
+__Run SAMtools faidx__
+
+Index the reference sequence in the FASTA format. 
+
+This step is required to add in the @SQ lines in the header of the SAM files.
+
+<pre>
+samtools faidx /data/ALS_Working_Grp/Reference/hg38.fa
+</pre>
+
 __Run SAMtools view__
 
 Example:  
 <pre>
-samtools view -S -b -h -o /data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571937.bam
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam
+samtools view -bt /data/ALS_Working_Grp/Cell_Reports_reanalysis/Reference/hg38.fa.fai 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam > 
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571937.bam
 </pre>
 
 __Run SAMtools sort__
