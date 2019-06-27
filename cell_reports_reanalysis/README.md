@@ -195,9 +195,8 @@ This script will remove all rows from the SAM file except those that satisfy all
 5. Is a forward mapper (script outputs forward mappers only)
 
 __Gunzip SAM files (output)__
- <pre>
- gunzip /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam.gz
- </pre>
+ <pre> 
+ gunzip /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam.gz </pre>
 
 ### 5. Convert SAM to BAM format and sort by coordinate 
 
