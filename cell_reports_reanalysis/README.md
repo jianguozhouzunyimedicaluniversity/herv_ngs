@@ -250,9 +250,11 @@ __Load TEToolKit__
 
 __Run TEcount__
 
+According to Tara, the PI told her that the reads were not stranded, so we selected the option "no" for the "stranded" argument.
+
 Example:  
 <pre>
-TEcount --sortByPos --format BAM --mode multi --stranded reverse -i 100
+TEcount --sortByPos --format BAM --mode multi --stranded no -i 100
 -b /data/ALS_Working_Grp/Cell_Reports_reanalysis/sorted_bam/SRR8571937_coordsort.bam 
 --GTF /data/ALS_Working_Grp/Gtf/hg38.gtf --TE /data/ALS_Working_Grp/Gtf/HERVK_Nath_2.gtf
 --project /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/TE_COUNTS_SRR8571937
