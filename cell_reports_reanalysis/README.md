@@ -257,7 +257,7 @@ Example:
 TEcount --sortByPos --format BAM --mode multi --stranded no -i 100
 -b /data/ALS_Working_Grp/Cell_Reports_reanalysis/sorted_bam/SRR8571937_coordsort.bam 
 --GTF /data/ALS_Working_Grp/Gtf/hg38.gtf --TE /data/ALS_Working_Grp/Gtf/HERVK_Nath_2.gtf
---project /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/TE_COUNTS_SRR8571937
+--project /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/SRR8571937_tecounts
 </pre>
 
 Required and optional arguments:  
@@ -269,6 +269,7 @@ Required and optional arguments:
 --sortByPos: Input file is sorted by chromosome position  
 --project [name]: Prefix used for output files (e.g. project name) DEFAULT: TEcount_out  
 -i | --iteration: maximum number of iterations used to optimize multi-reads assignment. DEFAULT: 100  
+-b: BAM file
 
 For more details on how to use TEcount, go to https://github.com/mhammell-laboratory/tetoolkit.
 
