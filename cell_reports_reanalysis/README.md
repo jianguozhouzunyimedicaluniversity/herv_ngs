@@ -208,20 +208,30 @@ __Run SAMtools faidx__
 
 Index the reference sequence in the FASTA format. 
 
-This step is required to add in the @SQ lines in the header of the SAM files.
+This step is required to add in the @SQ lines in the header of the SAM files. This header information was removed during the 
+filtering SAM file step of the PORT pipeline.
 
 <pre>
 samtools faidx /data/ALS_Working_Grp/Reference/hg38.fa
 </pre>
 
-__Run SAMtools view__
+__Run SAMtools view to generate SAM file with header info__
 
 Example:  
 <pre>
-samtools view -bt /data/ALS_Working_Grp/Cell_Reports_reanalysis/Reference/hg38.fa.fai 
+samtools view -ht /data/ALS_Working_Grp//Reference/hg38.fa.fai 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam > 
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571937.bam
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u_header.sam
 </pre>
+
+__Run SAMtools to convert SAM file to BAM file__
+
+Example:  
+<pre>
+samtools view -S -b -o /data/ALS_Working_Grp/Cell_Reports_reanalysis/bam/SRR8571937.bam  
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u_header.sam
+</pre>
+
 
 __Run SAMtools sort__
 
