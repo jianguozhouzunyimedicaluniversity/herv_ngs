@@ -275,4 +275,4 @@ For more details on how to use TEcount, go to https://github.com/mhammell-labora
 
 
 
-`samtools idxstats alignments.bam`
+`samtools flagstat alignments.bam`
