@@ -187,10 +187,8 @@ perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/filter_sam.
 
 The *norm_scripts/filter_sam.pl* script was modified to filter out reads mapped to chromosomes X and Y. In addition, the script originally outputted forward mappers only. However, TEcount expects both forward and reverse reads since it knows that reads are paired. With just the forward mappers only, I got the following error with TEcount:
 
-<pre>
 ******NOT COMPLETE*******
 If the BAM file is sorted by coordinates, please specify --sortByPos and re-run!
-</pre>
 
 This modified script will remove all rows from the SAM file except those that satisfy all of the following:  
 1. Unique mapper (-u option)  
@@ -200,7 +198,8 @@ This modified script will remove all rows from the SAM file except those that sa
 
 __Gunzip SAM files (output)__
  <pre> 
- gunzip /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam.gz </pre>
+ gunzip /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam.gz 
+ </pre>
 
 ### 5. Convert SAM to BAM format and sort by coordinate 
 
