@@ -190,7 +190,6 @@ In addition, the script originally outputted forward mappers only.
 However, TEcount expects both forward and reverse reads since it knows that reads are paired. 
 With just the forward mappers only, I got the following error with TEcount:
 
-******NOT COMPLETE*******
 **If the BAM file is sorted by coordinates, please specify --sortByPos and re-run!**
 
 This modified script will remove all rows from the SAM file except those that satisfy all of the following:  
