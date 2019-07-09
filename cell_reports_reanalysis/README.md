@@ -185,14 +185,16 @@ perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/filter_sam.
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937.sam 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads/SRR8571937/SRR8571937.ribosomalids.txt -u</pre>
 
-The *norm_scripts/filter_sam.pl* script was modified to filter out reads mapped to chromosomes X and Y.  
+The *norm_scripts/filter_sam.pl* script was modified to filter out reads mapped to chromosomes X and Y. In addition, the script originally outputted forward mappers only. However, TEcount expects both forward and reverse reads since it knows that reads are paired. With just the forward mappers only, I got the following error with TEcount:
 
-This script will remove all rows from the SAM file except those that satisfy all of the following:  
+******NOT COMPLETE*******
+If the BAM file is sorted by coordinates, please specify --sortByPos and re-run!
+
+This modified script will remove all rows from the SAM file except those that satisfy all of the following:  
 1. Unique mapper (-u option)  
 2. Both forward and reverse reads map consistently  
 3. Read ID not in the ribosomalids text file  
 4. Chromosome is one of the numbered ones (e.g. chr1, chr2, OR 1, 2)
-5. Is a forward mapper (script outputs forward mappers only)
 
 __Gunzip SAM files (output)__
  <pre> 
@@ -254,7 +256,7 @@ According to Tara, the PI told her that the reads were not stranded, so we selec
 
 Example:  
 <pre>
-TEcount --sortByPos --format BAM --mode multi --stranded no -i 100
+TEcount --sortByPos --format BAM --mode uniq --stranded no -i 100
 -b /data/ALS_Working_Grp/Cell_Reports_reanalysis/sorted_bam/SRR8571937_coordsort.bam 
 --GTF /data/ALS_Working_Grp/Gtf/hg38.gtf --TE /data/ALS_Working_Grp/Gtf/HERVK_Nath_2.gtf
 --project /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/SRR8571937_tecounts
