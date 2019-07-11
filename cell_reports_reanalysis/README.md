@@ -222,7 +222,7 @@ __Run SAMtools view to generate SAM file with header info__
 
 Example:  
 <pre>
-samtools view -ht /data/ALS_Working_Grp//Reference/hg38.fa.fai 
+samtools view -ht /data/ALS_Working_Grp/Reference/hg38.fa.fai 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam > 
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u_header.sam
 </pre>
