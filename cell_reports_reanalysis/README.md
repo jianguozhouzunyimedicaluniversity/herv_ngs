@@ -276,10 +276,13 @@ Required and optional arguments:
 
 For more details on how to use TEcount, go to https://github.com/mhammell-laboratory/tetoolkit.
 
-### 7. Obtain counts for HERV reads
+### 7. Obtain HERV counts
 
-`more /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/SRR8571937_tecounts.cntTable | grep dup > /data/ALS_Working_Grp/Cell_Reports_reanalysis/herv_counts/HERV_COUNTS_SRR8571937.txt`
+<pre>
+more /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/SRR8571937_tecounts.cntTable | grep dup >
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/herv_counts/HERV_COUNTS_SRR8571937.txt
+</pre>
 
+### 8. Count number of unique reads for each sample
 
-
-`samtools flagstat alignments.bam`
+`samtools flagstat /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam`
