@@ -55,8 +55,8 @@ __Load FastQC__
 __Run FastQC__  
 
 Example:  
-`fastqc -o /data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/fastqc_reports
-/data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/SRR8571937_1.fastq` 
+<pre>fastqc -o /data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/fastqc_reports
+/data/ALS_Working_Grp/Cell_Reports_reanalysis/seqs/SRR8571937_1.fastq</pre>
 
 Per Dr. Edward Lee, trimming and filtering of reads were not performed. 
 
