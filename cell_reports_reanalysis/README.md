@@ -64,7 +64,7 @@ Per Dr. Edward Lee, trimming and filtering of reads were not performed.
 
 In the paper, sequencing reads were aligned against GRCh38 (GENCODE release 22) using STAR 2.2.4 with option --outFilterIntronMotifs RemoveNonCanonical. All other parameters were kept as default.
 
-For this reanalysis, we aligned reads against GRCh38 (GENCODE release 28) instead since we already have been using this version for other analyses. In addition, the GTF file from this release was concatenated with Dr. Nath's lab's GTF file of HERVK annotations (*ALS_Annotations.gtf*). As a result, our genome indices for STAR was slightly different from the authors' genome indices. 
+For this reanalysis, we aligned reads against GRCh38 (GENCODE release 28) instead since we already have been using this version for other analyses. In addition, the GTF file from this release was concatenated with Dr. Nath's lab's GTF file of HERVK annotations (*ALS_Annotations.gtf*). As a result, our genome indices for STAR were slightly different from the authors' genome indices. 
 
 We added the parameter --outSAMunmapped Within KeepPairs to ensure that the data was compatible with PORT since we were using STAR >= v2.5.1a. 
 
@@ -90,7 +90,7 @@ Note: The most recent version of STAR, 2.7.0f, had the following error: *Genome 
 
 ### 4. Filter reads with PORT
 
-Liu et al. kept only uniquely mapping reads and filtered out ribosomal, mitochondrial, and non-standard chromosomal reads (i.e. X or Y chromosome reads). The authors modified the script called *norm_scripts/filter_sam.pl* from the PORT pipeline https://github.com/itmat/Normalization.git. 
+Liu et al. kept only uniquely mapping reads and filtered out ribosomal, mitochondrial, and non-standard chromosomal reads (i.e. X or Y chromosome reads). The authors modified scripts, specifically *norm_scripts/filter_sam.pl*, from the PORT pipeline https://github.com/itmat/Normalization.git. 
 
 __Download PORT__  
 
@@ -175,7 +175,7 @@ perl /data/ALS_Working_Grp/Cell_Reports_reanalysis/PORT/norm_scripts/parseblasto
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/reads
 </pre>
 
-The *norm_scripts/parseblastout.pl* script was modified so that the BLAST databases and output are not deleted.
+The *norm_scripts/parseblastout.pl* script was modified so that the BLAST databases and output files were not deleted.
 
 __Filter SAM file__
 
@@ -278,6 +278,7 @@ For more details on how to use TEcount, go to https://github.com/mhammell-labora
 
 ### 7. Obtain HERV counts
 
+Example:
 <pre>
 more /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/SRR8571937_tecounts.cntTable | grep dup >
 /data/ALS_Working_Grp/Cell_Reports_reanalysis/herv_counts/HERV_COUNTS_SRR8571937.txt
@@ -285,4 +286,5 @@ more /data/ALS_Working_Grp/Cell_Reports_reanalysis/tecounts/SRR8571937_tecounts.
 
 ### 8. Count number of unique reads for each sample
 
+Example:
 `samtools flagstat /data/ALS_Working_Grp/Cell_Reports_reanalysis/filtered_sam/SRR8571937_u.sam`
