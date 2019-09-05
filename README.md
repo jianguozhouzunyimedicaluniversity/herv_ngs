@@ -1,2 +1,2 @@
 # herv_ngs
-Tools for identifying and analyzing human endogenous retroviruses in RNA-seq data
+Work related to analyzing human endogenous retroviruses in RNA-seq data
